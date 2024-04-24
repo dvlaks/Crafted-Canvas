@@ -1,5 +1,6 @@
 import logo from "./logo.svg";
 import backend from "./backend.png";
+import linkedin from "./linkedin.png";
 import creator from "./creator.png";
 import mobile from "./mobile.png";
 import web from "./web.png";
@@ -19,7 +20,7 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
-
+import instagram from "./instagram.png"
 
 
 export {
@@ -44,4 +45,6 @@ export {
   tailwind,
   typescript,
   threejs,
+  instagram,
+  linkedin
 };
