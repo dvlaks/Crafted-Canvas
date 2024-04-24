@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { styles } from "./styles";
 import { navLinks } from "../constants";
-import { logo, menu, close } from "../assets";
+import { logo, menu, close , instagram , linkedin } from "../assets";
 
 const Navbar = () => {
   const [active, setActive] = useState("");
@@ -57,8 +57,8 @@ const Navbar = () => {
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
           ))}
-          <a href="www.linkedin.com/in/aakash-verma-669062269"><img src="/src/assets/linkedin.png" className=" w-6 h-6" alt="" /></a>
-          <a href="https://www.instagram.com/a._a._k._a._s._h?igsh=MWVmbnV4YzVvaHE5Ng== "><img src="/src/assets/instagram.png" className=" w-6 h-6" alt="" /></a>
+          <a href="www.linkedin.com/in/aakash-verma-669062269"><img src={linkedin} className=" w-6 h-6" alt="" /></a>
+          <a href="https://www.instagram.com/a._a._k._a._s._h?igsh=MWVmbnV4YzVvaHE5Ng== "><img src={instagram} className=" w-6 h-6" alt="" /></a>
 
 
         </ul>
