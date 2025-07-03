@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { styles } from './styles';
 import { SectionWrapper } from '../hoc';
-import { education, experiences, projects, skills, contact } from '../constants';
+import { education, skills, contact } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 
 const EducationCard = () => (
@@ -246,4 +246,5 @@ const Resume = () => {
   );
 };
 
-export default SectionWrapper(Resume, 'resume');
+const ResumeWithSection = SectionWrapper(Resume, 'resume');
+export default ResumeWithSection;

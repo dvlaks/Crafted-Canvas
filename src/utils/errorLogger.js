@@ -37,7 +37,7 @@ class ErrorLogger {
     // WebGL context lost handler
     const canvas = document.querySelector('canvas');
     if (canvas) {
-      canvas.addEventListener('webglcontextlost', (event) => {
+      canvas.addEventListener('webglcontextlost', (_event) => {
         this.logError({
           type: 'webgl_context_lost',
           message: 'WebGL context was lost',

@@ -276,4 +276,5 @@ const Works = () => {
   );
 };
 
-export default SectionWrapper(Works, "projects");
+const WorksWithSection = SectionWrapper(Works, "projects");
+export default WorksWithSection;

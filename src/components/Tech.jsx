@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { BallCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { technologies } from "../constants";
@@ -170,4 +170,5 @@ const Tech = () => {
   );
 };
 
-export default SectionWrapper(Tech, "tech");
+const TechWithSection = SectionWrapper(Tech, "tech");
+export default TechWithSection;

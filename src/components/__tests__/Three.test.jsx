@@ -17,7 +17,7 @@ vi.mock('react', async () => {
   const actual = await vi.importActual('react')
   return {
     ...actual,
-    Suspense: ({ children, fallback }) => {
+    Suspense: ({ children }) => {
       // For testing, just render children directly
       return children
     },
