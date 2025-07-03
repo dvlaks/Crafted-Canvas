@@ -27,6 +27,13 @@ class AppErrorBoundary extends React.Component {
           <div className="text-white text-center">
             <h1 className="text-4xl font-bold mb-4">Something went wrong</h1>
             <p className="text-gray-400">Please refresh the page</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="mt-4 px-4 py-2 bg-secondary text-white rounded hover:bg-secondary-dark focus:outline-none focus:ring-2 focus:ring-secondary"
+              aria-label="Refresh page"
+            >
+              Refresh Page
+            </button>
           </div>
         </div>
       );
