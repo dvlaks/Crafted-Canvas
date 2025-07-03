@@ -7,9 +7,6 @@ const MouseTrail = () => {
       const coords = { x: 0, y: 0 };
       const circles = document.querySelectorAll(".circle");
 
-      // Debug log for mouse trail
-      console.log('Mouse trail circles count:', circles.length);
-
       if (circles.length === 0) {
         console.warn('No circle elements found for mouse trail');
         return;

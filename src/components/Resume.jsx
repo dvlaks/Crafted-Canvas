@@ -121,7 +121,12 @@ const Resume = () => {
     setActiveTab(tabId);
   };
 
-  console.log('Skills data:', skills); // Debug log
+  // Debug check for skills data
+  React.useEffect(() => {
+    if (!skills) {
+      console.warn('Skills data is not available');
+    }
+  }, []);
 
   return (
     <section className='relative w-full'>
