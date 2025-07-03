@@ -2,12 +2,10 @@ import React, { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
-
-
+import ModelErrorBoundary from "../ModelErrorBoundary";
 
 const Earth = () => {
   const earth = useGLTF("./mangrove/scene.gltf");
-
   return (
     <primitive object={earth.scene} scale={.5} position-y={-1} rotation-y={0} />
   );
@@ -35,7 +33,14 @@ const EarthCanvas = () => {
           minPolarAngle={Math.PI / 2}
         />
 
-        <Earth />
+        <ModelErrorBoundary fallback={
+          <mesh>
+            <sphereGeometry args={[1, 32, 32]} />
+            <meshStandardMaterial color="#4caf50" wireframe />
+          </mesh>
+        }>
+          <Earth />
+        </ModelErrorBoundary>
 
         <Preload all />
       </Suspense>
