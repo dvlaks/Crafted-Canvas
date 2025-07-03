@@ -6,7 +6,7 @@ import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
-const ServiceCard = ({ index, title, icon }) => (
+const ServiceCard = ({ index, title, icon, description }) => (
   <Tilt className='xs:w-[250px] w-full'>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
@@ -22,13 +22,19 @@ const ServiceCard = ({ index, title, icon }) => (
       >
         <img
           src={icon}
-          alt='web-development'
+          alt={title}
           className='w-16 h-16 object-contain'
         />
 
         <h3 className='text-[#9EC8B9] text-[20px] font-bold text-center'>
           {title}
         </h3>
+        
+        {description && (
+          <p className='text-secondary text-[14px] text-center mt-2'>
+            {description}
+          </p>
+        )}
       </div>
     </motion.div>
   </Tilt>
@@ -46,10 +52,11 @@ const About = () => {
         variants={fadeIn("", "", 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
-        I'm a skilled frontend developer with experience in JavaScript and expertise in frameworks like React, Node.js and
-        Basics of Three.js. I'm a quick learner and collaborate closely with colleague to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let's work together to bring ideas to life!
+        I'm a passionate Software Engineer and AI/ML enthusiast currently pursuing B.Tech in Industrial and Production Engineering at NIT Jalandhar. With hands-on experience from internships at Bluestock Fintech and Afame Technologies, I've developed robust web applications, led engineering teams, and delivered high-performance solutions.
+        <br /><br />
+        My expertise spans full-stack development with Java Spring Boot, React.js, and modern databases like PostgreSQL and MongoDB. I've successfully increased code coverage to 95%, improved system stability by 30%, and enhanced user engagement by 35% through innovative ML-powered recommendation systems.
+        <br /><br />
+        I'm skilled in developing enterprise-grade applications with SOA architecture, REST APIs, and cloud deployment on AWS. My projects include a comprehensive Bond Analyzer for financial data analysis, an intelligent Movie Recommender System using machine learning, and real-time weather applications with seamless API integrations.
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>

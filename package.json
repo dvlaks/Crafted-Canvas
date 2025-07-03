@@ -7,7 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --ext js,jsx --fix",
+    "preview": "vite preview",
+    "analyze": "vite-bundle-analyzer",
+    "type-check": "tsc --noEmit",
+    "test:accessibility": "echo 'Run accessibility tests here'",
+    "deploy": "npm run build && npm run preview"
   },
   "dependencies": {
     "@emailjs/browser": "^4.3.3",

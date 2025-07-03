@@ -7,7 +7,6 @@ import {
   Preload,
   useTexture,
 } from "@react-three/drei";
-
 import CanvasLoader from "../Loader";
 
 const Ball = (props) => {
@@ -22,7 +21,7 @@ const Ball = (props) => {
         <meshStandardMaterial
           color='#fff8eb'
           polygonOffset
-          polygonOffsetFactor={0}
+          polygonOffsetFactor={-5}
           flatShading
         />
         <Decal
@@ -48,7 +47,6 @@ const BallCanvas = ({ icon }) => {
         <OrbitControls enableZoom={false} />
         <Ball imgUrl={icon} />
       </Suspense>
-
       <Preload all />
     </Canvas>
   );
