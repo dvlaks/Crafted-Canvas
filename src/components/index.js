@@ -11,6 +11,7 @@ import Three from './three';
 import MouseTrail from './MouseTrail';
 import ThemeToggle from './ThemeToggle';
 import ScrollProgress from './ScrollProgress';
+import MobileLoadingScreen from './MobileLoadingScreen';
 
 export {
   Hero,
@@ -28,5 +29,6 @@ export {
   StarsCanvas,
   MouseTrail,
   ThemeToggle,
-  ScrollProgress
+  ScrollProgress,
+  MobileLoadingScreen
 };

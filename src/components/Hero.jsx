@@ -32,7 +32,7 @@ const Hero = () => {
           </motion.p>
           
           <motion.div
-            className="mt-8 flex gap-4"
+            className="mt-8 flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -40,7 +40,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-300"
+              className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-center"
               onClick={() => {
                 const projectsElement = document.getElementById('projects');
                 if (projectsElement) {
@@ -59,7 +59,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="border-2 border-purple-500 text-purple-500 px-6 py-3 rounded-lg font-medium hover:bg-purple-500 hover:text-white transition-all duration-300"
+              className="border-2 border-purple-500 text-purple-500 px-6 py-3 rounded-lg font-medium hover:bg-purple-500 hover:text-white transition-all duration-300 text-center"
               onClick={() => {
                 const contactElement = document.getElementById('contact');
                 if (contactElement) {

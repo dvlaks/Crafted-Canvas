@@ -4,7 +4,7 @@ import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 import ModelErrorBoundary from "../ModelErrorBoundary";
 
-const Computers = ({ isMobile }) => {
+const Computers = ({ isMobile, isTablet }) => {
   const computer = useGLTF("./tbp/scene.gltf");
   
   return (
@@ -21,8 +21,8 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.7 : 1.25}
-        position={isMobile ? [0, -3, -2.2] : [0, -1.3, -2]}
+        scale={isMobile ? 0.5 : isTablet ? 0.8 : 1.25}
+        position={isMobile ? [0, -2.5, -1.5] : isTablet ? [0, -2.8, -1.8] : [0, -1.3, -2]}
         rotation={[-0.01, -0.2, 0.1]}
       />
     </mesh>
@@ -31,19 +31,24 @@ const Computers = ({ isMobile }) => {
 
 const ComputersCanvas = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 500px)");
-    setIsMobile(mediaQuery.matches);
-
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
-    };
+    const mobileQuery = window.matchMedia("(max-width: 500px)");
+    const tabletQuery = window.matchMedia("(max-width: 768px) and (min-width: 501px)");
     
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
+    setIsMobile(mobileQuery.matches);
+    setIsTablet(tabletQuery.matches);
+
+    const handleMobileChange = (event) => setIsMobile(event.matches);
+    const handleTabletChange = (event) => setIsTablet(event.matches);
+    
+    mobileQuery.addEventListener("change", handleMobileChange);
+    tabletQuery.addEventListener("change", handleTabletChange);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
+      mobileQuery.removeEventListener("change", handleMobileChange);
+      tabletQuery.removeEventListener("change", handleTabletChange);
     };
   }, []);
 
@@ -51,9 +56,14 @@ const ComputersCanvas = () => {
     <Canvas
       frameloop='demand'
       shadows
-      dpr={[1, 2]}
-      camera={{ position: [20, 3, 5], fov: 25 }}
-      gl={{ preserveDrawingBuffer: true }}
+      dpr={isMobile ? [1, 1.5] : [1, 2]}
+      camera={{ position: [20, 3, 5], fov: isMobile ? 35 : 25 }}
+      gl={{ 
+        preserveDrawingBuffer: true,
+        antialias: !isMobile,
+        alpha: true,
+        powerPreference: isMobile ? "low-power" : "high-performance"
+      }}
       style={{ position: 'relative', zIndex: 1 }}
     >
       <Suspense fallback={<CanvasLoader />}>
@@ -68,7 +78,7 @@ const ComputersCanvas = () => {
             <meshStandardMaterial color="#915EFF" wireframe />
           </mesh>
         }>
-          <Computers isMobile={isMobile} />
+          <Computers isMobile={isMobile} isTablet={isTablet} />
         </ModelErrorBoundary>
       </Suspense>
 

@@ -7,6 +7,14 @@ import { styles } from "./styles";
 
 const TechBall = ({ technology, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   return (
     <motion.div
@@ -18,11 +26,13 @@ const TechBall = ({ technology, index }) => {
         delay: index * 0.1,
         ease: "easeOut"
       }}
-      whileHover={{ scale: 1.1, y: -5 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      whileHover={!isMobile ? { scale: 1.1, y: -5 } : {}}
+      onHoverStart={() => !isMobile && setIsHovered(true)}
+      onHoverEnd={() => !isMobile && setIsHovered(false)}
+      onTouchStart={() => isMobile && setIsHovered(true)}
+      onTouchEnd={() => isMobile && setTimeout(() => setIsHovered(false), 2000)}
     >
-      <div className="w-28 h-28 relative">
+      <div className={`${isMobile ? 'w-20 h-20' : 'w-28 h-28'} relative`}>
         <BallCanvas icon={technology.icon} />
         
         {/* Glow effect */}
@@ -38,7 +48,7 @@ const TechBall = ({ technology, index }) => {
 
       {/* Technology name label */}
       <motion.div
-        className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 whitespace-nowrap"
+        className={`absolute ${isMobile ? '-bottom-8' : '-bottom-10'} left-1/2 transform -translate-x-1/2 whitespace-nowrap z-10`}
         initial={{ opacity: 0, y: 10 }}
         animate={{ 
           opacity: isHovered ? 1 : 0, 
@@ -46,8 +56,8 @@ const TechBall = ({ technology, index }) => {
         }}
         transition={{ duration: 0.2 }}
       >
-        <div className="bg-gradient-to-r from-purple-900/95 to-pink-900/95 backdrop-blur-sm px-3 py-2 rounded-lg border border-purple-500/40 shadow-lg">
-          <p className="text-white text-sm font-medium">{technology.name}</p>
+        <div className="bg-gradient-to-r from-purple-900/95 to-pink-900/95 backdrop-blur-sm px-2 sm:px-3 py-1 sm:py-2 rounded-lg border border-purple-500/40 shadow-lg">
+          <p className={`text-white ${isMobile ? 'text-xs' : 'text-sm'} font-medium`}>{technology.name}</p>
           {technology.proficiency && (
             <div className="mt-1 flex items-center gap-1">
               <div className="flex-1 bg-gray-700 rounded-full h-1">
@@ -143,7 +153,7 @@ const Tech = () => {
 
         {/* Tech Grid */}
         <motion.div 
-          className="flex flex-row flex-wrap justify-center gap-10 pb-8"
+          className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-6 sm:gap-10 pb-8 justify-items-center"
           layout
           transition={{ duration: 0.5 }}
         >

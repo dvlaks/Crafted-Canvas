@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { About, Contact, Experience, Hero, Navbar, Tech, Works, Resume, StarsCanvas, Three, MouseTrail, ThemeToggle, ScrollProgress } from "./components";
+import { About, Contact, Experience, Hero, Navbar, Tech, Works, Resume, StarsCanvas, Three, MouseTrail, ThemeToggle, ScrollProgress, MobileLoadingScreen } from "./components";
 import PerformanceMonitor from "./components/PerformanceMonitor";
 import AccessibilityMenu from "./components/AccessibilityMenu";
 import { motion } from "framer-motion";
@@ -37,9 +37,33 @@ class AppErrorBoundary extends React.Component {
 }
 
 const App = () => {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    // Detect mobile device
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    // Simulate loading time (adjust based on your needs)
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, isMobile ? 2000 : 1500);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, [isMobile]);
+
   return (
     <AppErrorBoundary>
       <BrowserRouter>
+        <MobileLoadingScreen isVisible={isLoading} />
         <div className='relative z-0 bg-primary'>
           <AccessibilityMenu />
           <ScrollProgress />

@@ -151,47 +151,69 @@ const ProjectCard = ({
   source_code_link,
   live_demo_link,
 }) => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
         options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
+          max: isMobile ? 15 : 45,
+          scale: isMobile ? 1 : 1.02,
+          speed: isMobile ? 300 : 450,
+          glare: !isMobile,
+          "max-glare": 0.1,
         }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+        className='bg-tertiary p-4 sm:p-5 rounded-2xl w-full sm:w-[360px] shadow-lg'
       >
-        <div className='relative w-full h-[230px]'>
+        <div className='relative w-full h-[200px] sm:h-[230px]'>
           <img
             src={image}
-            alt='project_image'
+            alt={`${name} project screenshot`}
             className='w-full h-full object-cover rounded-2xl'
+            loading="lazy"
           />
 
-          <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-            >
-              <img
-                src={github}
-                alt='source code'
-                className='w-1/2 h-1/2 object-contain'
-              />
+          <div className='absolute inset-0 flex justify-end m-2 sm:m-3 card-img_hover'>
+            <div className="flex gap-2">
+              <div
+                onClick={() => window.open(source_code_link, "_blank")}
+                className='black-gradient w-8 h-8 sm:w-10 sm:h-10 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-transform duration-200'
+              >
+                <img
+                  src={github}
+                  alt='view source code'
+                  className='w-1/2 h-1/2 object-contain'
+                />
+              </div>
+              {live_demo_link && (
+                <div
+                  onClick={() => window.open(live_demo_link, "_blank")}
+                  className='bg-blue-600 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex justify-center items-center cursor-pointer hover:scale-110 transition-transform duration-200'
+                >
+                  <span className="text-white text-xs font-bold">🔗</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
-        <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+        <div className='mt-4 sm:mt-5'>
+          <h3 className='text-white font-bold text-[20px] sm:text-[24px] leading-tight'>{name}</h3>
+          <p className='mt-2 text-secondary text-[13px] sm:text-[14px] leading-relaxed line-clamp-4'>{description}</p>
         </div>
 
-        <div className='mt-4 flex flex-wrap gap-2'>
+        <div className='mt-3 sm:mt-4 flex flex-wrap gap-2'>
           {tags.map((tag) => (
             <p
               key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
+              className={`text-[12px] sm:text-[14px] ${tag.color} bg-black-100 px-2 py-1 rounded-md`}
             >
               #{tag.name}
             </p>
@@ -245,7 +267,7 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className='mt-20 flex flex-wrap gap-7'>
+      <div className='mt-12 sm:mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 justify-items-center'>
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}

@@ -37,11 +37,25 @@ const Ball = (props) => {
 };
 
 const BallCanvas = ({ icon }) => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <Canvas
       frameloop='demand'
-      dpr={[1, 2]}
-      gl={{ preserveDrawingBuffer: true }}
+      dpr={isMobile ? [1, 1.5] : [1, 2]}
+      gl={{ 
+        preserveDrawingBuffer: true,
+        antialias: !isMobile,
+        alpha: true,
+        powerPreference: isMobile ? "low-power" : "high-performance"
+      }}
       style={{ position: 'relative', zIndex: 1 }}
     >
       <Suspense fallback={<CanvasLoader />}>
