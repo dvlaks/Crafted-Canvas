@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://crafted-canvas.vercel.app/sitemap.xml
+
+# Disallow certain paths (if any)
+Disallow: /admin/
+Disallow: /*.json$
+Disallow: /api/
+
+# Crawl delay
+Crawl-delay: 1

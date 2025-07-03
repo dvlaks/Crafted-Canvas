@@ -1,6 +1,11 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true },
+  env: { 
+    browser: true, 
+    es2020: true,
+    node: true,
+    serviceworker: true
+  },
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
@@ -8,8 +13,18 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
-  settings: { react: { version: '18.2' } },
+  parserOptions: { 
+    ecmaVersion: 'latest', 
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
+  settings: { 
+    react: { 
+      version: '18.2' 
+    } 
+  },
   plugins: ['react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
@@ -17,5 +32,16 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
+    'react/no-unknown-property': 'off',
+    'no-unused-vars': ['warn', { 
+      varsIgnorePattern: '^(React|_)',
+      argsIgnorePattern: '^_'
+    }]
   },
+  globals: {
+    globalThis: 'readonly',
+    process: 'readonly'
+  }
 }

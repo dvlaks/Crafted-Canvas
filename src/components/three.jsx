@@ -4,7 +4,7 @@ import ThreeJSErrorBoundary from './ThreeJSErrorBoundary';
 
 const Three = () => {
   return (
-    <section className={`relative w-full h-screen mx-auto cursor-move`}>
+    <main className={`relative w-full h-screen mx-auto cursor-move`} role="main" aria-label="3D Interactive Section">
       <ThreeJSErrorBoundary>
         <Suspense fallback={
           <div className="flex items-center justify-center h-full bg-gradient-to-b from-primary to-black-100">
@@ -18,7 +18,7 @@ const Three = () => {
           <ComputersCanvas />
         </Suspense>
       </ThreeJSErrorBoundary>
-    </section>
+    </main>
   );
 }
 

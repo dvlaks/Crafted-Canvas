@@ -15,10 +15,46 @@ class ThreeJSErrorBoundary extends React.Component {
   componentDidCatch(error, errorInfo) {
     // Log error details for debugging
     console.error('ThreeJS Error Boundary caught an error:', error, errorInfo);
+    
+    // Send error to monitoring service (in production)
+    if (process.env.NODE_ENV === 'production') {
+      // You can integrate with services like Sentry here
+      this.logErrorToService(error, errorInfo);
+    }
+    
     this.setState({
       error: error,
       errorInfo: errorInfo
     });
+  }
+
+  logErrorToService = (error, errorInfo) => {
+    // Integration point for error monitoring services
+    // Example: Sentry.captureException(error, { extra: errorInfo });
+    
+    // For now, just store in localStorage for analysis
+    try {
+      const errorData = {
+        message: error.message,
+        stack: error.stack,
+        componentStack: errorInfo.componentStack,
+        timestamp: new Date().toISOString(),
+        userAgent: navigator.userAgent,
+        url: window.location.href
+      };
+      
+      const existingErrors = JSON.parse(localStorage.getItem('portfolio_errors') || '[]');
+      existingErrors.push(errorData);
+      
+      // Keep only last 10 errors
+      if (existingErrors.length > 10) {
+        existingErrors.splice(0, existingErrors.length - 10);
+      }
+      
+      localStorage.setItem('portfolio_errors', JSON.stringify(existingErrors));
+    } catch (e) {
+      console.error('Failed to log error:', e);
+    }
   }
 
   render() {
