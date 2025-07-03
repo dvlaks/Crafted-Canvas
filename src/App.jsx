@@ -56,16 +56,18 @@ const App = () => {
           
           <main id="main-content" role="main">
             <motion.div 
-              className='relative z-0'
+              className='relative z-10'
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
               <Navbar />
-              <Suspense fallback={<div className="h-screen bg-primary flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
-                <Three />
-              </Suspense>
-              <Hero />
+              <div className="relative">
+                <Suspense fallback={<div className="h-screen bg-primary flex items-center justify-center"><div className="text-white">Loading...</div></div>}>
+                  <Three />
+                </Suspense>
+                <Hero />
+              </div>
             </motion.div>
             
             <About />
