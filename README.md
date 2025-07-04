@@ -44,8 +44,6 @@ A modern, interactive portfolio website showcasing real projects and professiona
 - **Build Tool**: Vite
 - **Deployment**: Vercel
 
-## 🎯 Updated Rating: 10/10 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
-
 ### ✅ New Features Added:
 - **Advanced Tech Component** - Interactive 3D tech balls with proficiency indicators
 - **Performance Monitoring** - Real-time FPS and memory usage tracking
