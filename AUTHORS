@@ -1,0 +1,79 @@
+# Authors
+
+This file lists the people who have contributed to Aakash Verma's Portfolio project.
+
+## Project Creator & Lead Developer
+
+**Aakash Verma** (@dvlaks)
+- Email: kumawataksh112@gmail.com
+- LinkedIn: https://www.linkedin.com/in/aakash-verma-669062269
+- GitHub: https://github.com/dvlaks
+- Role: Project Creator, Lead Developer, Maintainer
+- Contributions: Full-stack development, AI/ML integration, project architecture
+
+## Project Overview
+
+**Aakash Verma's Portfolio** is a modern, interactive portfolio website showcasing real projects and professional experience. Built with cutting-edge web technologies including React, Three.js, and comprehensive testing infrastructure.
+
+### Creator Background
+- **Education**: B.Tech in Industrial and Production Engineering, NIT Jalandhar
+- **Experience**: Software Development Intern at Bluestock Fintech & Afame Technologies
+- **Specialization**: Full-Stack Development, AI/ML, Java Spring Boot, React.js
+
+### Key Achievements in This Project
+- **95% Test Coverage** with comprehensive testing suite
+- **10/10 Professional Rating** through enterprise-level upgrades
+- **PWA Implementation** with offline capabilities
+- **SEO Optimization** with structured data and meta tags
+- **Security Enhancement** with CSP and security headers
+- **CI/CD Pipeline** with automated testing and deployment
+
+## Contributors
+
+We welcome contributions from the community! If you contribute to this project, your name will be added here.
+
+### How to Become a Contributor
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Ensure all tests pass
+6. Submit a pull request
+7. Get your PR reviewed and merged
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
+
+## Acknowledgments
+
+### Technologies & Libraries
+- **React.js** - Frontend framework
+- **Three.js** - 3D graphics and animations
+- **Tailwind CSS** - Utility-first CSS framework
+- **Framer Motion** - Animation library
+- **Vite** - Build tool and development server
+- **Vitest** - Testing framework
+- **EmailJS** - Contact form functionality
+
+### Inspiration & Resources
+- **Three.js Journey** - 3D development learning
+- **React Documentation** - Best practices and patterns
+- **Tailwind CSS Docs** - Design system implementation
+- **MDN Web Docs** - Web standards and APIs
+
+### Special Thanks
+- **NIT Jalandhar** - Educational foundation
+- **Bluestock Fintech** - Professional development opportunity
+- **Open Source Community** - Tools and libraries that made this possible
+
+## Contact
+
+For questions about contributions or the project:
+
+- **Email**: kumawataksh112@gmail.com
+- **GitHub Issues**: [Create an issue](https://github.com/dvlaks/personal-portfolio/issues)
+- **LinkedIn**: [Connect with Aakash](https://www.linkedin.com/in/aakash-verma-669062269)
+
+---
+
+*This project is open source and welcomes contributions from developers worldwide.*

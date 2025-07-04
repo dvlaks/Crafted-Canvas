@@ -282,7 +282,7 @@ const education = {
 const contact = {
   email: "kumawataksh112@gmail.com",
   phone: "+91-8875668848",
-  linkedin: "https://www.linkedin.com/in/aakash-verma",
+  linkedin: "https://www.linkedin.com/in/aakash-verma-669062269",
   github: "https://github.com/dvlaks", // Updated with your actual GitHub
   location: "Jalandhar, India"
 };

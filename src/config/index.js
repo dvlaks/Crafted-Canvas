@@ -44,7 +44,7 @@ export const config = {
   // Social links
   social: {
     github: 'https://github.com/dvlaks',
-    linkedin: 'https://linkedin.com/in/aakash-verma',
+    linkedin: 'https://www.linkedin.com/in/aakash-verma-669062269',
     email: 'kumawataksh112@gmail.com',
     portfolio: 'https://crafted-canvas.vercel.app',
   },

@@ -1,8 +1,33 @@
 {
-  "name": "personalportfolio",
+  "name": "aakash-verma-portfolio",
   "private": true,
   "version": "2.0.0",
   "type": "module",
+  "description": "Modern, interactive portfolio website of Aakash Verma - Full-Stack Developer & AI/ML Engineer from NIT Jalandhar",
+  "author": {
+    "name": "Aakash Verma",
+    "email": "kumawataksh112@gmail.com",
+    "url": "https://github.com/dvlaks"
+  },
+  "homepage": "https://aakash-verma-portfolio.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dvlaks/personal-portfolio"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "threejs",
+    "full-stack",
+    "ai-ml",
+    "developer",
+    "aakash-verma",
+    "nit-jalandhar"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dvlaks/personal-portfolio/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

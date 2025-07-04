@@ -222,4 +222,29 @@ npm run build -- --mode development
 
 ---
 
+## 📞 Contact Aakash Verma
+
+**Let's connect and build something amazing together!**
+
+### 🌐 Professional Links
+- 💼 **LinkedIn**: [Aakash Verma](https://www.linkedin.com/in/aakash-verma-669062269)
+- 🐱 **GitHub**: [dvlaks](https://github.com/dvlaks)
+- 📸 **Instagram**: [@a._a._k._a._s._h](https://www.instagram.com/a._a._k._a._s._h?igsh=MWVmbnV4YzVvaHE5Ng==)
+- 🌍 **Portfolio**: [aakash-verma-portfolio.vercel.app](https://aakash-verma-portfolio.vercel.app)
+
+### 💼 Professional Background
+- 🎓 **B.Tech** in Industrial and Production Engineering, **NIT Jalandhar**
+- 💻 **Software Development Intern** at **Bluestock Fintech**
+- 🚀 **Full-Stack Developer** with expertise in React.js, Java Spring Boot, AI/ML
+- 📊 **Experience** in fintech applications, data analysis, and machine learning
+
+### 🛠️ Technical Expertise
+- **Frontend**: React.js, Three.js, Tailwind CSS, TypeScript
+- **Backend**: Java Spring Boot, Node.js, RESTful APIs
+- **AI/ML**: Python, TensorFlow, Data Analysis, Recommendation Systems
+- **Database**: MySQL, MongoDB, Database Optimization
+- **DevOps**: Git, CI/CD, Docker, Deployment Automation
+
+---
+
 ⭐ **Star this repo if you found it helpful!** ⭐

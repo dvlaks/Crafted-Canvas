@@ -13,7 +13,7 @@ Thank you for your interest in contributing to this portfolio project! This docu
 
 1. **Fork and Clone**
    ```bash
-   git clone https://github.com/yourusername/personal-portfolio.git
+   git clone https://github.com/dvlaks/personal-portfolio.git
    cd personal-portfolio
    ```
 
