@@ -37,10 +37,66 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Aakash Portfolio" />
   
-  <!-- Preload critical resources -->
-  <link rel="preload" href="/mangrove/scene.gltf" as="fetch" crossorigin="anonymous" />
+  <!-- Preload critical resources for performance -->
+  <link rel="preload" href="/tbp/scene-optimized.gltf" as="fetch" crossorigin="anonymous" />
+  <link rel="preload" href="/tbp/textures-optimized/material_baseColor.webp" as="image" type="image/webp" />
+  <link rel="preload" href="/tbp/textures-optimized/hierbas_baseColor.webp" as="image" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  
+  <!-- DNS prefetch for external resources -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  
+  <!-- Resource hints for better loading -->
+  <link rel="prefetch" href="/tbp/textures-optimized/plantas_baseColor.webp" />
+  <link rel="prefetch" href="/tbp/textures-optimized/tela_baseColor.webp" />
+  <link rel="prefetch" href="/tbp/textures-optimized/material_6_baseColor.webp" />
+  
+  <!-- Critical CSS (inline styles for above-the-fold content) -->
+  <style>
+    /* Critical styles for immediate rendering */
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #050816;
+      color: white;
+      overflow-x: hidden;
+    }
+    
+    #root {
+      min-height: 100vh;
+    }
+    
+    /* Loading screen optimization */
+    .loading-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, #050816, #1a1a2e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    
+    /* Optimize canvas rendering */
+    canvas {
+      display: block;
+      outline: none;
+      touch-action: none;
+    }
+    
+    /* Mobile optimizations */
+    @media (max-width: 768px) {
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+  </style>
   
   <!-- PWA Manifest -->
   <link rel="manifest" href="/manifest.json" />
