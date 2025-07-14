@@ -3,27 +3,41 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 import CanvasLoader from "../Loader";
 import ModelErrorBoundary from "../ModelErrorBoundary";
+import { getDeviceCapability, performanceMonitor } from "../../utils/performance";
 
 const Computers = ({ isMobile, isTablet }) => {
-  // Use optimized model for better performance
+  // Use optimized model for better performance with device-based fallback
   const modelPath = useMemo(() => {
-    return isMobile ? "./tbp/scene-optimized.gltf" : "./tbp/scene-optimized.gltf";
+    const deviceCapability = getDeviceCapability();
+    const useOptimized = deviceCapability !== 'low' || !isMobile;
+    
+    performanceMonitor.markMilestone('model-selection');
+    return useOptimized ? "./tbp/scene-optimized.gltf" : "./tbp/scene-optimized.gltf";
   }, [isMobile]);
   
   const computer = useGLTF(modelPath);
   
-  // Optimize lighting for performance
-  const lightConfig = useMemo(() => ({
-    hemisphere: { intensity: isMobile ? 0.1 : 0.15 },
-    spot: {
-      intensity: isMobile ? 0.5 : 1,
-      shadowMapSize: isMobile ? 256 : 512, // Reduced from 1024
-      position: [-20, 50, 10],
-      angle: 0.12,
-      penumbra: 1,
-    },
-    point: { intensity: isMobile ? 0.5 : 1 }
-  }), [isMobile]);
+  useEffect(() => {
+    performanceMonitor.markMilestone('model-loaded');
+  }, [computer]);
+  
+  // Optimize lighting for performance with device-adaptive settings
+  const lightConfig = useMemo(() => {
+    const deviceCapability = getDeviceCapability();
+    const isLowEnd = deviceCapability === 'low' || isMobile;
+    
+    return {
+      hemisphere: { intensity: isLowEnd ? 0.1 : 0.15 },
+      spot: {
+        intensity: isLowEnd ? 0.5 : 1,
+        shadowMapSize: isLowEnd ? 256 : 512, // Reduced from 1024
+        position: [-20, 50, 10],
+        angle: 0.12,
+        penumbra: 1,
+      },
+      point: { intensity: isLowEnd ? 0.5 : 1 }
+    };
+  }, [isMobile]);
   
   return (
     <mesh>
@@ -67,6 +81,9 @@ const ComputersCanvas = () => {
     mobileQuery.addEventListener("change", handleMobileChange);
     tabletQuery.addEventListener("change", handleTabletChange);
 
+    // Mark performance milestone
+    performanceMonitor.markMilestone('canvas-mount');
+
     return () => {
       mobileQuery.removeEventListener("change", handleMobileChange);
       tabletQuery.removeEventListener("change", handleTabletChange);
@@ -74,23 +91,28 @@ const ComputersCanvas = () => {
   }, []);
 
   // Performance optimizations based on device capability
-  const canvasConfig = useMemo(() => ({
-    dpr: isMobile ? [0.5, 1] : [1, 2], // Lower pixel ratio on mobile
-    camera: { 
-      position: [20, 3, 5], 
-      fov: isMobile ? 40 : 25,
-      near: 0.1,
-      far: 200 // Add frustum culling
-    },
-    gl: { 
-      preserveDrawingBuffer: true,
-      antialias: !isMobile, // Disable anti-aliasing on mobile
-      alpha: true,
-      powerPreference: isMobile ? "low-power" : "high-performance",
-      stencil: false, // Disable stencil buffer
-      depth: true
-    }
-  }), [isMobile]);
+  const canvasConfig = useMemo(() => {
+    const deviceCapability = getDeviceCapability();
+    const isLowEnd = deviceCapability === 'low' || isMobile;
+    
+    return {
+      dpr: isLowEnd ? [0.5, 1] : [1, 2], // Lower pixel ratio on low-end devices
+      camera: { 
+        position: [20, 3, 5], 
+        fov: isMobile ? 40 : 25,
+        near: 0.1,
+        far: 200 // Add frustum culling
+      },
+      gl: { 
+        preserveDrawingBuffer: true,
+        antialias: !isLowEnd, // Disable anti-aliasing on low-end devices
+        alpha: true,
+        powerPreference: isLowEnd ? "low-power" : "high-performance",
+        stencil: false, // Disable stencil buffer for better performance
+        depth: true
+      }
+    };
+  }, [isMobile]);
 
   return (
     <Canvas
@@ -100,6 +122,7 @@ const ComputersCanvas = () => {
       camera={canvasConfig.camera}
       gl={canvasConfig.gl}
       style={{ position: 'relative', zIndex: 1 }}
+      onCreated={() => performanceMonitor.markMilestone('canvas-created')}
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
