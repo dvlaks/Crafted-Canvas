@@ -1,6 +1,10 @@
-import React, { Suspense } from 'react'
-import { ComputersCanvas } from "./canvas";
+import React, { Suspense, lazy } from 'react'
 import ThreeJSErrorBoundary from './ThreeJSErrorBoundary';
+
+// Lazy load the Three.js canvas to improve initial load time
+const ComputersCanvas = lazy(() => 
+  import('./canvas/Computers.jsx').then(module => ({ default: module.default }))
+);
 
 const Three = () => {
   return (
