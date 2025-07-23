@@ -4,15 +4,11 @@ A modern, interactive portfolio website showcasing real projects and professiona
 
 ## 👨‍💻 About Aakash Verma
 
-**Software Development Intern** with experience at **Bluestock Fintech** and **Afame Technologies**  
+**Software Developer** with experience at **Bluestock Fintech** and **Afame Technologies**  
 **B.Tech Student** in Industrial and Production Engineering at **NIT Jalandhar**  
-**Full-Stack Developer** specializing in Java Spring Boot, React.js, and AI/ML applications
+**Full-Stack Developer**
+**Python Developer**
 
-### 🏆 Key Achievements:
-- **95% Code Coverage** achieved in IPO web application
-- **30% Increase** in system stability through bug resolution
-- **35% User Engagement** boost via ML recommendation system
-- **20% Performance Optimization** leading teams of 5+ engineers
 
 ## ✨ Features
 
