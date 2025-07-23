@@ -28,6 +28,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             Python & Full-Stack Developer & AI/ML Engineer <br className='sm:block hidden' /
+            specializing in Enterprise Applications, Data Analysis & Financial Systems
           </motion.p>
           
           <motion.div
